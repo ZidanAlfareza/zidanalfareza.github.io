@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M. Zidan Alfareza — Chemist, R&D / QC</title>
+<meta name="description" content="Technical resume of M. Zidan Alfareza, Chemist specializing in ink and adhesive formulation, R&D and Quality Control.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3f2ee;
+    --paper-raised:#fbfaf7;
+    --ink:#17181c;
+    --ink-soft:#52565d;
+    --ink-faint:#8b8e94;
+    --line:#d9d7cf;
+    --line-strong:#b9b6ac;
+    --blue:#1b4f9c;
+    --blue-soft:#e7edf7;
+    --red:#c8471e;
+    --cyan:#00aeef;
+    --magenta:#e5007d;
+    --yellow:#ffd400;
+    --key:#17181c;
+    --radius:2px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', -apple-system, sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .mono{font-family:'IBM Plex Mono', ui-monospace, monospace;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- registration marks ---------- */
+  .regmark{
+    width:18px;height:18px;
+    opacity:.55;
+    flex:0 0 auto;
+  }
+  .regmark circle{fill:none;stroke:var(--ink-soft);stroke-width:1;}
+  .regmark line{stroke:var(--ink-soft);stroke-width:1;}
+
+  /* ---------- sheet frame ---------- */
+  .sheet{
+    max-width:840px;
+    margin:0 auto;
+    padding:28px 28px 60px;
+  }
+
+  .frame-top, .frame-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:2px 2px;
+  }
+  .frame-top .mono, .frame-bottom .mono{
+    font-size:11px;
+    letter-spacing:.04em;
+    color:var(--ink-faint);
+  }
+
+  /* ---------- header / masthead ---------- */
+  header.masthead{
+    margin-top:18px;
+    padding-bottom:26px;
+    border-bottom:2px solid var(--ink);
+  }
+
+  .doc-label{
+    font-size:11px;
+    letter-spacing:.08em;
+    color:var(--blue);
+    margin:0 0 18px;
+  }
+
+  .name-stack{
+    position:relative;
+    display:inline-block;
+    margin:0 0 6px;
+  }
+  .name-stack .layer{
+    font-size:clamp(34px,6vw,54px);
+    font-weight:700;
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    margin:0;
+    white-space:nowrap;
+  }
+  .name-stack .layer.final{ color:var(--ink); position:relative; }
+  .name-stack .ghost{
+    position:absolute;
+    top:0; left:0;
+    margin:0;
+    opacity:0;
+  }
+  .name-stack .c{color:var(--cyan);}
+  .name-stack .m{color:var(--magenta);}
+  .name-stack .y{color:var(--yellow);}
+
+  @keyframes converge-c{
+    0%{ transform:translate(-6px,-4px); opacity:.85; }
+    70%{ transform:translate(-6px,-4px); opacity:.85; }
+    100%{ transform:translate(0,0); opacity:0; }
+  }
+  @keyframes converge-m{
+    0%{ transform:translate(6px,3px); opacity:.85; }
+    70%{ transform:translate(6px,3px); opacity:.85; }
+    100%{ transform:translate(0,0); opacity:0; }
+  }
+  @keyframes converge-y{
+    0%{ transform:translate(-3px,5px); opacity:.85; }
+    70%{ transform:translate(-3px,5px); opacity:.85; }
+    100%{ transform:translate(0,0); opacity:0; }
+  }
+  @keyframes settle-final{
+    0%{ opacity:.4; }
+    70%{ opacity:.4; }
+    100%{ opacity:1; }
+  }
+  .name-stack .ghost.c{ animation: converge-c 1.4s ease-out forwards; }
+  .name-stack .ghost.m{ animation: converge-m 1.4s ease-out forwards; }
+  .name-stack .ghost.y{ animation: converge-y 1.4s ease-out forwards; }
+  .name-stack .layer.final{ animation: settle-final 1.4s ease-out forwards; }
+
+  .role-line{
+    font-size:17px;
+    color:var(--ink-soft);
+    margin:6px 0 22px;
+  }
+
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px 22px;
+    font-size:13.5px;
+  }
+  .contact-row a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line-strong); }
+  .contact-row a:hover{ border-color:var(--blue); color:var(--blue); }
+  .contact-row span.k{ color:var(--ink-faint); margin-right:6px; }
+
+  /* ---------- sections ---------- */
+  section.block{
+    padding:34px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section.block:last-of-type{ border-bottom:none; }
+
+  .block-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:18px;
+  }
+  .block-head .num{
+    font-size:13px;
+    color:var(--blue);
+    flex:0 0 auto;
+  }
+  .block-head h2{
+    font-size:19px;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .block-head .rule{
+    flex:1;
+    height:1px;
+    background:var(--line);
+    transform:translateY(-2px);
+  }
+
+  .summary-text{
+    font-size:15.5px;
+    color:var(--ink-soft);
+    max-width:66ch;
+  }
+
+  /* ---------- spec table (skills) ---------- */
+  .spec-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+  }
+  .spec-table tr{ border-bottom:1px solid var(--line); }
+  .spec-table tr:last-child{ border-bottom:none; }
+  .spec-table td{ padding:11px 4px; vertical-align:top; }
+  .spec-table td.label{
+    width:190px;
+    color:var(--blue);
+    font-size:12.5px;
+    letter-spacing:.02em;
+    padding-right:16px;
+  }
+  .spec-table td.value{ color:var(--ink); }
+
+  /* ---------- experience ---------- */
+  .job{ margin-bottom:28px; }
+  .job:last-child{ margin-bottom:0; }
+  .job-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:6px 16px;
+    margin-bottom:4px;
+  }
+  .job-title{ font-weight:600; font-size:15.5px; }
+  .job-org{ color:var(--ink-soft); font-size:14.5px; }
+  .job-date{
+    font-size:12.5px;
+    color:var(--ink-faint);
+    white-space:nowrap;
+  }
+  ul.bullets{
+    margin:10px 0 0;
+    padding-left:0;
+    list-style:none;
+  }
+  ul.bullets li{
+    position:relative;
+    padding-left:16px;
+    margin-bottom:7px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  ul.bullets li::before{
+    content:"";
+    position:absolute;
+    left:0; top:8px;
+    width:6px; height:1px;
+    background:var(--red);
+  }
+
+  /* ---------- education ---------- */
+  .edu{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .edu:last-child{ border-bottom:none; }
+  .edu-school{ font-weight:600; font-size:15px; }
+  .edu-degree{ color:var(--ink-soft); font-size:14px; margin-top:2px; }
+  .edu-meta{ text-align:right; font-size:12.5px; color:var(--ink-faint); white-space:nowrap; }
+  .edu-gpa{ font-size:12.5px; color:var(--blue); margin-top:2px; }
+
+  /* ---------- certifications ---------- */
+  .cert-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px 28px;
+  }
+  .cert-item{
+    font-size:14px;
+    color:var(--ink-soft);
+    padding:9px 0;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    gap:10px;
+  }
+  .cert-item .tag{
+    color:var(--red);
+    font-size:11px;
+    flex:0 0 auto;
+    margin-top:3px;
+  }
+  @media (max-width:640px){ .cert-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- footer / color bar ---------- */
+  footer{ padding-top:36px; }
+  .colorbar{
+    display:flex;
+    height:14px;
+    border:1px solid var(--ink);
+    margin-bottom:14px;
+  }
+  .colorbar span{ flex:1; }
+  .colorbar .c{ background:var(--cyan); }
+  .colorbar .m{ background:var(--magenta); }
+  .colorbar .y{ background:var(--yellow); }
+  .colorbar .k{ background:var(--key); }
+
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:11.5px;
+    color:var(--ink-faint);
+  }
+
+  .cta-row{
+    display:flex;
+    gap:12px;
+    margin-top:24px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:11px 18px;
+    font-size:13.5px;
+    font-family:'IBM Plex Mono', monospace;
+    text-decoration:none;
+    border:1px solid var(--ink);
+    color:var(--ink);
+    background:transparent;
+    transition:background .15s ease, color .15s ease;
+  }
+  .btn:hover{ background:var(--ink); color:var(--paper-raised); }
+  .btn.primary{ background:var(--blue); color:#fff; border-color:var(--blue); }
+  .btn.primary:hover{ background:#153f7c; }
+
+  @media (max-width:640px){
+    .sheet{ padding:18px 16px 44px; }
+    .spec-table td.label{ width:120px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="frame-top">
+    <svg class="regmark" viewBox="0 0 18 18"><circle cx="9" cy="9" r="6"/><line x1="9" y1="0" x2="9" y2="18"/><line x1="0" y1="9" x2="18" y2="9"/></svg>
+    <span class="mono">TDS-2026 / REV.03</span>
+    <svg class="regmark" viewBox="0 0 18 18"><circle cx="9" cy="9" r="6"/><line x1="9" y1="0" x2="9" y2="18"/><line x1="0" y1="9" x2="18" y2="9"/></svg>
+  </div>
+
+  <header class="masthead">
+    <p class="doc-label mono">TECHNICAL DATA SHEET — PROFESSIONAL PROFILE</p>
+
+    <div class="name-stack">
+      <p class="layer ghost c">M. Zidan Alfareza</p>
+      <p class="layer ghost m">M. Zidan Alfareza</p>
+      <p class="layer ghost y">M. Zidan Alfareza</p>
+      <p class="layer final">M. Zidan Alfareza</p>
+    </div>
+
+    <p class="role-line">Chemist — Ink &amp; Adhesive Formulation · R&amp;D and Quality Control</p>
+
+    <div class="contact-row mono">
+      <span><span class="k">TEL</span>+62 858-7578-7747</span>
+      <span><span class="k">MAIL</span><a href="mailto:zidanalfarrr@gmail.com">zidanalfarrr@gmail.com</a></span>
+      <span><span class="k">LOC</span>Jakarta, Indonesia</span>
+      <span><span class="k">NET</span><a href="https://linkedin.com/in/mzidanalfareza" target="_blank" rel="noopener">linkedin.mzidanalfareza</a></span>
+    </div>
+  </header>
+
+  <!-- 01 SUMMARY -->
+  <section class="block">
+    <div class="block-head">
+      <span class="num mono">01</span>
+      <h2>Summary</h2>
+      <div class="rule"></div>
+    </div>
+    <p class="summary-text">Experienced chemist specializing in inks and adhesives, with a solid background across R&amp;D and quality control. Proven track record in product development, material research, process optimization, and sustainability-driven reformulation — backed by strong instrumental and conventional analysis skills, close attention to detail, and a structured approach to problem-solving.</p>
+  </section>
+
+  <!-- 02 CORE COMPETENCIES -->
+  <section class="block">
+    <div class="block-head">
+      <span class="num mono">02</span>
+      <h2>Core competencies</h2>
+      <div class="rule"></div>
+    </div>
+    <table class="spec-table">
+      <tr>
+        <td class="label mono">INSTRUMENTAL ANALYSIS</td>
+        <td class="value">UV-Vis Spectroscopy, GC, MS, HPLC, HPTLC, AAS, FTIR</td>
+      </tr>
+      <tr>
+        <td class="label mono">LAB EQUIPMENT &amp; TESTING</td>
+        <td class="value">Digital microscopes, KF titration, COF testers, Suntest XLS+, Xenotest, tensile testing machines, eXact spectrophotometer</td>
+      </tr>
+      <tr>
+        <td class="label mono">CONVENTIONAL ANALYSIS</td>
+        <td class="value">Volumetric analysis, gravimetric analysis</td>
+      </tr>
+      <tr>
+        <td class="label mono">SOFTWARE &amp; DATA</td>
+        <td class="value">Microsoft Office, Outlook, Aspen HYSYS, PFD, SQL, Python, Tableau, Looker Studio</td>
+      </tr>
+      <tr>
+        <td class="label mono">WORKING STYLE</td>
+        <td class="value">Time management &amp; prioritization, adaptability, attention to detail, problem-solving</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- 03 EXPERIENCE -->
+  <section class="block">
+    <div class="block-head">
+      <span class="num mono">03</span>
+      <h2>Work experience</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div>
+          <span class="job-title">Research and Development Staff</span><br>
+          <span class="job-org">PT DIC Graphics — Jakarta, ID</span>
+        </div>
+        <span class="job-date mono">2020 — PRESENT</span>
+      </div>
+      <ul class="bullets">
+        <li>Consistently achieved the annual company target for developing and launching new gravure ink products, including reverse, surface, specialty inks, and OPV.</li>
+        <li>Identified alternative raw materials replacing over 80% of existing materials through a structured evaluation process, ensuring full regulatory compliance.</li>
+        <li>Addressed internal production and customer issues through simulation and root cause analysis, improving product performance and customer satisfaction.</li>
+        <li>Achieved 10–20% cost reduction (exceeding IDR 2 billion annually) in gravure ink manufacturing through process and material optimization while maintaining product quality.</li>
+        <li>Collaborated cross-functionally to reduce inventory levels of slow-moving items aged 6–12 months.</li>
+        <li>Created a comprehensive technology reference to guide future development and process improvements.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div>
+          <span class="job-title">QC Laboratory Technician</span><br>
+          <span class="job-org">PT Huntsman Indonesia — Jakarta, ID</span>
+        </div>
+        <span class="job-date mono">2018 — 2019</span>
+      </div>
+      <ul class="bullets">
+        <li>Provided approval and rejection decisions for raw materials and finished products alongside the QC Department Head.</li>
+        <li>Collaborated cross-functionally to resolve quality issues through root cause analysis and corrective actions, reducing rework by 30%.</li>
+        <li>Managed laboratory equipment calibration and test method validation, achieving a 95% audit pass rate and reducing downtime by 25%.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 04 EDUCATION -->
+  <section class="block">
+    <div class="block-head">
+      <span class="num mono">04</span>
+      <h2>Education</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="edu">
+      <div>
+        <div class="edu-school">Muhammadiyah Jakarta University</div>
+        <div class="edu-degree">Bachelor of Engineering, Chemical Engineering</div>
+      </div>
+      <div class="edu-meta mono">
+        2019 — 2021<br>
+        <span class="edu-gpa">GPA 3.4 / 4.0</span>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div>
+        <div class="edu-school">AKA Bogor Polytechnic</div>
+        <div class="edu-degree">Diploma of Science, Chemical Analysis</div>
+      </div>
+      <div class="edu-meta mono">
+        2015 — 2018<br>
+        <span class="edu-gpa">GPA 3.25 / 4.0</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 CERTIFICATIONS -->
+  <section class="block">
+    <div class="block-head">
+      <span class="num mono">05</span>
+      <h2>Certifications &amp; training</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-item"><span class="tag mono">●</span>Packaging Printing Essentials &amp; Cost-Effective Strategies — IPF Masterclass</div>
+      <div class="cert-item"><span class="tag mono">●</span>Technical Guidance for SNI ISO/IEC 17025:2017 Accreditation — SGS Academy</div>
+      <div class="cert-item"><span class="tag mono">●</span>IELTS — IDP Kelapa Gading, Jakarta</div>
+      <div class="cert-item"><span class="tag mono">●</span>Full Stack Data Analytics — RevoU</div>
+      <div class="cert-item"><span class="tag mono">●</span>Quality Management System Training — ISO 9001:2015</div>
+      <div class="cert-item"><span class="tag mono">●</span>Food Safety Management System Training — ISO 22000:2018</div>
+      <div class="cert-item"><span class="tag mono">●</span>Environmental Management System Training — ISO 14001:2015</div>
+    </div>
+  </section>
+
+  <!-- 06 ORGANIZATION -->
+  <section class="block">
+    <div class="block-head">
+      <span class="num mono">06</span>
+      <h2>Organization &amp; volunteer experience</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div>
+          <span class="job-title">5S Coordinator</span><br>
+          <span class="job-org">5S Organization, PT DIC Graphics — Jakarta, ID</span>
+        </div>
+        <span class="job-date mono">2021 — 2024</span>
+      </div>
+      <ul class="bullets">
+        <li>Coordinated 5S implementation in a laboratory, improving organization, safety, and operational efficiency.</li>
+        <li>Performed regular internal 5S audits, standardized lab layouts and chemical storage, and drove corrective actions.</li>
+        <li>Conducted knowledge-sharing sessions on 5S standards to sustain compliance through SOPs.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div>
+          <span class="job-title">Facilitator</span><br>
+          <span class="job-org">Inspiration Factory Foundation (Volunteer) — Jakarta, ID</span>
+        </div>
+        <span class="job-date mono">2020 — 2023</span>
+      </div>
+      <ul class="bullets">
+        <li>Volunteered as a youth mentor, empowering and supporting children through guidance and positive role modelling.</li>
+        <li>Designed and delivered engaging after-school programs supporting learning and personal development among young people.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="cta-row">
+    <a class="btn primary" href="mailto:zidanalfarrr@gmail.com">Contact me</a>
+    <a class="btn" href="./Zidan_Alfareza_Resume.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+    <a class="btn" href="https://linkedin.com/in/mzidanalfareza" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+
+  <footer>
+    <div class="colorbar" aria-hidden="true">
+      <span class="c"></span><span class="m"></span><span class="y"></span><span class="k"></span>
+    </div>
+    <div class="footer-row mono">
+      <span>M. ZIDAN ALFAREZA · CHEMIST</span>
+      <span>MAJALENGKA, INDONESIA · 2026</span>
+    </div>
+  </footer>
+
+  <div class="frame-bottom">
+    <svg class="regmark" viewBox="0 0 18 18"><circle cx="9" cy="9" r="6"/><line x1="9" y1="0" x2="9" y2="18"/><line x1="0" y1="9" x2="18" y2="9"/></svg>
+    <span class="mono">PAGE 1/1</span>
+    <svg class="regmark" viewBox="0 0 18 18"><circle cx="9" cy="9" r="6"/><line x1="9" y1="0" x2="9" y2="18"/><line x1="0" y1="9" x2="18" y2="9"/></svg>
+  </div>
+
+</div>
+
+</body>
+</html>
