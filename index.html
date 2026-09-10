@@ -7,24 +7,22 @@
 <meta name="description" content="Technical resume of M. Zidan Alfareza, Chemist specializing in ink and adhesive formulation, R&D and Quality Control.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#f3f2ee;
-    --paper-raised:#fbfaf7;
-    --ink:#17181c;
-    --ink-soft:#52565d;
-    --ink-faint:#8b8e94;
-    --line:#d9d7cf;
-    --line-strong:#b9b6ac;
-    --blue:#1b4f9c;
-    --blue-soft:#e7edf7;
-    --red:#c8471e;
-    --cyan:#00aeef;
-    --magenta:#e5007d;
-    --yellow:#ffd400;
-    --key:#17181c;
-    --radius:2px;
+    --bg:#0a0912;
+    --bg-raised:#131020;
+    --bg-raised-2:#181428;
+    --line:#2a2440;
+    --line-soft:#1e1a30;
+    --text:#eeecf7;
+    --text-soft:#a9a3c2;
+    --text-faint:#6b6588;
+    --violet:#a855f7;
+    --violet-soft:#8b5cf6;
+    --cyan:#22d3ee;
+    --pink:#f472b6;
+    --green:#4ade80;
   }
 
   *{box-sizing:border-box;}
@@ -32,218 +30,295 @@
 
   body{
     margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'IBM Plex Sans', -apple-system, sans-serif;
+    background:
+      repeating-linear-gradient(0deg, rgba(168,85,247,.05) 0, rgba(168,85,247,.05) 1px, transparent 1px, transparent 44px),
+      repeating-linear-gradient(90deg, rgba(168,85,247,.05) 0, rgba(168,85,247,.05) 1px, transparent 1px, transparent 44px),
+      var(--bg);
+    color:var(--text);
+    font-family:'Sora', -apple-system, sans-serif;
     font-size:16px;
-    line-height:1.55;
+    line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    position:relative;
+    overflow-x:hidden;
   }
 
-  .mono{font-family:'IBM Plex Mono', ui-monospace, monospace;}
+  /* ---------- molecular sketch watermarks ---------- */
+  .molecule{
+    position:fixed;
+    z-index:0;
+    pointer-events:none;
+    opacity:.14;
+  }
+  .molecule.m1{ top:4%; right:-6%; width:340px; }
+  .molecule.m2{ bottom:2%; left:-8%; width:300px; }
+  .molecule.m3{ top:42%; right:-10%; width:220px; opacity:.09; }
+  @media (max-width:780px){
+    .molecule.m1{ width:220px; }
+    .molecule.m2{ width:200px; }
+    .molecule.m3{ display:none; }
+  }
+
+  .mono{ font-family:'JetBrains Mono', ui-monospace, monospace; }
 
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
   }
 
-  /* ---------- registration marks ---------- */
-  .regmark{
-    width:18px;height:18px;
-    opacity:.55;
-    flex:0 0 auto;
+  /* ---------- aurora glow backdrop ---------- */
+  .aurora{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    overflow:hidden;
   }
-  .regmark circle{fill:none;stroke:var(--ink-soft);stroke-width:1;}
-  .regmark line{stroke:var(--ink-soft);stroke-width:1;}
+  .aurora::before, .aurora::after{
+    content:"";
+    position:absolute;
+    width:70vw; height:70vw;
+    max-width:900px; max-height:900px;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:.22;
+  }
+  .aurora::before{
+    top:-25%; left:-15%;
+    background:radial-gradient(circle, var(--violet) 0%, transparent 70%);
+  }
+  .aurora::after{
+    top:5%; right:-20%;
+    background:radial-gradient(circle, var(--cyan) 0%, transparent 70%);
+    opacity:.14;
+  }
+  .aurora-2{
+    position:fixed;
+    bottom:-20%; left:20%;
+    width:60vw; height:60vw;
+    max-width:700px; max-height:700px;
+    border-radius:50%;
+    filter:blur(130px);
+    background:radial-gradient(circle, var(--pink) 0%, transparent 70%);
+    opacity:.10;
+    z-index:0;
+    pointer-events:none;
+  }
 
-  /* ---------- sheet frame ---------- */
   .sheet{
+    position:relative;
+    z-index:1;
     max-width:840px;
     margin:0 auto;
-    padding:28px 28px 60px;
+    padding:64px 28px 80px;
   }
 
-  .frame-top, .frame-bottom{
+  /* ---------- header ---------- */
+  .status-row{
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    padding:2px 2px;
+    gap:10px;
+    margin-bottom:36px;
   }
-  .frame-top .mono, .frame-bottom .mono{
-    font-size:11px;
-    letter-spacing:.04em;
-    color:var(--ink-faint);
+  .dot{
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 8px var(--green);
+    animation:pulse 2s ease-in-out infinite;
   }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.4;} }
+  .status-row .mono{ font-size:12px; letter-spacing:.08em; color:var(--text-faint); }
 
-  /* ---------- header / masthead ---------- */
-  header.masthead{
-    margin-top:18px;
-    padding-bottom:26px;
-    border-bottom:2px solid var(--ink);
-  }
+  header.masthead{ margin-bottom:8px; }
 
-  .doc-label{
-    font-size:11px;
-    letter-spacing:.08em;
-    color:var(--blue);
-    margin:0 0 18px;
+  h1.name{
+    font-family:'Sora', sans-serif;
+    font-weight:800;
+    font-size:clamp(36px,6vw,58px);
+    line-height:1.05;
+    margin:0 0 10px;
+    letter-spacing:-0.02em;
+    background:linear-gradient(120deg, #fff 20%, var(--violet-soft) 60%, var(--cyan) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
   }
-
-  .name-stack{
-    position:relative;
-    display:inline-block;
-    margin:0 0 6px;
-  }
-  .name-stack .layer{
-    font-size:clamp(34px,6vw,54px);
-    font-weight:700;
-    line-height:1.02;
-    letter-spacing:-0.01em;
-    margin:0;
-    white-space:nowrap;
-  }
-  .name-stack .layer.final{ color:var(--ink); position:relative; }
-  .name-stack .ghost{
-    position:absolute;
-    top:0; left:0;
-    margin:0;
-    opacity:0;
-  }
-  .name-stack .c{color:var(--cyan);}
-  .name-stack .m{color:var(--magenta);}
-  .name-stack .y{color:var(--yellow);}
-
-  @keyframes converge-c{
-    0%{ transform:translate(-6px,-4px); opacity:.85; }
-    70%{ transform:translate(-6px,-4px); opacity:.85; }
-    100%{ transform:translate(0,0); opacity:0; }
-  }
-  @keyframes converge-m{
-    0%{ transform:translate(6px,3px); opacity:.85; }
-    70%{ transform:translate(6px,3px); opacity:.85; }
-    100%{ transform:translate(0,0); opacity:0; }
-  }
-  @keyframes converge-y{
-    0%{ transform:translate(-3px,5px); opacity:.85; }
-    70%{ transform:translate(-3px,5px); opacity:.85; }
-    100%{ transform:translate(0,0); opacity:0; }
-  }
-  @keyframes settle-final{
-    0%{ opacity:.4; }
-    70%{ opacity:.4; }
-    100%{ opacity:1; }
-  }
-  .name-stack .ghost.c{ animation: converge-c 1.4s ease-out forwards; }
-  .name-stack .ghost.m{ animation: converge-m 1.4s ease-out forwards; }
-  .name-stack .ghost.y{ animation: converge-y 1.4s ease-out forwards; }
-  .name-stack .layer.final{ animation: settle-final 1.4s ease-out forwards; }
 
   .role-line{
     font-size:17px;
-    color:var(--ink-soft);
-    margin:6px 0 22px;
+    color:var(--text-soft);
+    margin:0 0 26px;
   }
+  .role-line .sep{ color:var(--violet); margin:0 8px; }
 
   .contact-row{
     display:flex;
     flex-wrap:wrap;
-    gap:4px 22px;
-    font-size:13.5px;
+    gap:10px 10px;
+    margin-bottom:8px;
   }
-  .contact-row a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line-strong); }
-  .contact-row a:hover{ border-color:var(--blue); color:var(--blue); }
-  .contact-row span.k{ color:var(--ink-faint); margin-right:6px; }
+  .chip{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:7px 13px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:var(--bg-raised);
+    font-size:12.5px;
+    color:var(--text-soft);
+    text-decoration:none;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .chip:hover{ border-color:var(--violet-soft); color:var(--text); }
+  .chip .k{ color:var(--violet-soft); }
+
+  /* ---------- spectrum trace (signature moment) ---------- */
+  .trace-wrap{
+    margin:36px 0 4px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--bg-raised);
+    padding:18px 20px 14px;
+  }
+  .trace-label{
+    display:flex;
+    justify-content:space-between;
+    font-size:10.5px;
+    color:var(--text-faint);
+    letter-spacing:.06em;
+    margin-bottom:6px;
+  }
+  .trace-svg{ width:100%; height:auto; display:block; }
+  .trace-path{
+    fill:none;
+    stroke:url(#traceGrad);
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-dasharray:900;
+    stroke-dashoffset:900;
+    animation:draw 2.2s ease-out forwards .3s;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
 
   /* ---------- sections ---------- */
   section.block{
-    padding:34px 0;
-    border-bottom:1px solid var(--line);
+    padding:46px 0;
+    border-bottom:1px solid var(--line-soft);
   }
   section.block:last-of-type{ border-bottom:none; }
 
   .block-head{
     display:flex;
-    align-items:baseline;
-    gap:14px;
-    margin-bottom:18px;
+    align-items:center;
+    gap:12px;
+    margin-bottom:22px;
   }
-  .block-head .num{
-    font-size:13px;
-    color:var(--blue);
+  .chan{
+    font-size:11px;
+    color:var(--violet-soft);
+    background:rgba(168,85,247,.1);
+    border:1px solid rgba(168,85,247,.3);
+    padding:3px 9px;
+    border-radius:4px;
     flex:0 0 auto;
   }
   .block-head h2{
-    font-size:19px;
-    font-weight:600;
+    font-size:21px;
+    font-weight:700;
     margin:0;
     letter-spacing:-0.01em;
-  }
-  .block-head .rule{
-    flex:1;
-    height:1px;
-    background:var(--line);
-    transform:translateY(-2px);
   }
 
   .summary-text{
     font-size:15.5px;
-    color:var(--ink-soft);
+    color:var(--text-soft);
     max-width:66ch;
   }
 
-  /* ---------- spec table (skills) ---------- */
-  .spec-table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:14px;
+  /* ---------- competency grid ---------- */
+  .comp-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
   }
-  .spec-table tr{ border-bottom:1px solid var(--line); }
-  .spec-table tr:last-child{ border-bottom:none; }
-  .spec-table td{ padding:11px 4px; vertical-align:top; }
-  .spec-table td.label{
-    width:190px;
-    color:var(--blue);
-    font-size:12.5px;
-    letter-spacing:.02em;
-    padding-right:16px;
+  @media (max-width:640px){ .comp-grid{ grid-template-columns:1fr; } }
+  .comp-card{
+    border:1px solid var(--line);
+    background:var(--bg-raised);
+    border-radius:8px;
+    padding:16px 18px;
+    transition:border-color .2s ease, transform .2s ease;
   }
-  .spec-table td.value{ color:var(--ink); }
+  .comp-card:hover{ border-color:var(--violet-soft); transform:translateY(-2px); }
+  .comp-card .mono{
+    font-size:10.5px;
+    color:var(--cyan);
+    letter-spacing:.06em;
+    display:block;
+    margin-bottom:8px;
+  }
+  .comp-card p{ margin:0; font-size:14px; color:var(--text-soft); line-height:1.55; }
 
   /* ---------- experience ---------- */
-  .job{ margin-bottom:28px; }
+  .job{
+    position:relative;
+    padding-left:26px;
+    margin-bottom:34px;
+  }
   .job:last-child{ margin-bottom:0; }
+  .job::before{
+    content:"";
+    position:absolute;
+    left:0; top:6px;
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--bg);
+    border:2px solid var(--violet-soft);
+    box-shadow:0 0 10px rgba(168,85,247,.5);
+  }
+  .job::after{
+    content:"";
+    position:absolute;
+    left:4px; top:18px;
+    bottom:-34px;
+    width:1px;
+    background:linear-gradient(var(--violet-soft), transparent);
+  }
+  .job:last-child::after{ display:none; }
+
   .job-head{
     display:flex;
     justify-content:space-between;
     align-items:baseline;
     flex-wrap:wrap;
     gap:6px 16px;
-    margin-bottom:4px;
+    margin-bottom:5px;
   }
-  .job-title{ font-weight:600; font-size:15.5px; }
-  .job-org{ color:var(--ink-soft); font-size:14.5px; }
+  .job-title{ font-weight:700; font-size:16px; color:var(--text); }
+  .job-org{ color:var(--text-soft); font-size:14px; }
   .job-date{
-    font-size:12.5px;
-    color:var(--ink-faint);
+    font-size:11.5px;
+    color:var(--violet-soft);
+    background:rgba(168,85,247,.08);
+    padding:3px 10px;
+    border-radius:999px;
     white-space:nowrap;
   }
-  ul.bullets{
-    margin:10px 0 0;
-    padding-left:0;
-    list-style:none;
-  }
+  ul.bullets{ margin:12px 0 0; padding-left:0; list-style:none; }
   ul.bullets li{
     position:relative;
-    padding-left:16px;
-    margin-bottom:7px;
+    padding-left:18px;
+    margin-bottom:9px;
     font-size:14.5px;
-    color:var(--ink-soft);
+    color:var(--text-soft);
   }
   ul.bullets li::before{
-    content:"";
+    content:"›";
     position:absolute;
-    left:0; top:8px;
-    width:6px; height:1px;
-    background:var(--red);
+    left:0; top:-1px;
+    color:var(--cyan);
+    font-weight:600;
   }
 
   /* ---------- education ---------- */
@@ -252,166 +327,198 @@
     justify-content:space-between;
     gap:16px;
     flex-wrap:wrap;
-    padding:14px 0;
-    border-bottom:1px solid var(--line);
+    padding:16px 18px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--bg-raised);
+    margin-bottom:12px;
   }
-  .edu:last-child{ border-bottom:none; }
-  .edu-school{ font-weight:600; font-size:15px; }
-  .edu-degree{ color:var(--ink-soft); font-size:14px; margin-top:2px; }
-  .edu-meta{ text-align:right; font-size:12.5px; color:var(--ink-faint); white-space:nowrap; }
-  .edu-gpa{ font-size:12.5px; color:var(--blue); margin-top:2px; }
+  .edu:last-child{ margin-bottom:0; }
+  .edu-school{ font-weight:700; font-size:15px; }
+  .edu-degree{ color:var(--text-soft); font-size:13.5px; margin-top:3px; }
+  .edu-meta{ text-align:right; font-size:12px; color:var(--text-faint); white-space:nowrap; }
+  .edu-gpa{ font-size:12px; color:var(--cyan); margin-top:3px; }
 
   /* ---------- certifications ---------- */
-  .cert-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px 28px;
-  }
+  .cert-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px 20px; }
+  @media (max-width:640px){ .cert-grid{ grid-template-columns:1fr; } }
   .cert-item{
-    font-size:14px;
-    color:var(--ink-soft);
-    padding:9px 0;
-    border-bottom:1px solid var(--line);
+    font-size:13.5px;
+    color:var(--text-soft);
+    padding:11px 14px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:var(--bg-raised);
     display:flex;
     gap:10px;
+    align-items:flex-start;
   }
-  .cert-item .tag{
-    color:var(--red);
-    font-size:11px;
-    flex:0 0 auto;
-    margin-top:3px;
-  }
-  @media (max-width:640px){ .cert-grid{ grid-template-columns:1fr; } }
+  .cert-item .tag{ color:var(--violet-soft); font-size:11px; margin-top:2px; }
 
-  /* ---------- footer / color bar ---------- */
-  footer{ padding-top:36px; }
-  .colorbar{
-    display:flex;
-    height:14px;
-    border:1px solid var(--ink);
-    margin-bottom:14px;
+  /* ---------- footer / spectrum bar ---------- */
+  footer{ padding-top:44px; }
+  .specbar{
+    height:10px;
+    border-radius:999px;
+    background:linear-gradient(90deg,
+      #7c3aed 0%, #a855f7 20%, #22d3ee 45%, #4ade80 65%, #facc15 82%, #f472b6 100%);
+    margin-bottom:16px;
+    opacity:.85;
   }
-  .colorbar span{ flex:1; }
-  .colorbar .c{ background:var(--cyan); }
-  .colorbar .m{ background:var(--magenta); }
-  .colorbar .y{ background:var(--yellow); }
-  .colorbar .k{ background:var(--key); }
-
   .footer-row{
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
     gap:10px;
-    font-size:11.5px;
-    color:var(--ink-faint);
+    font-size:11px;
+    color:var(--text-faint);
+    letter-spacing:.03em;
   }
 
-  .cta-row{
-    display:flex;
-    gap:12px;
-    margin-top:24px;
-    flex-wrap:wrap;
-  }
+  .cta-row{ display:flex; gap:12px; margin-top:30px; flex-wrap:wrap; }
   .btn{
     display:inline-flex;
     align-items:center;
     gap:8px;
-    padding:11px 18px;
+    padding:12px 20px;
     font-size:13.5px;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:'JetBrains Mono', monospace;
     text-decoration:none;
-    border:1px solid var(--ink);
-    color:var(--ink);
-    background:transparent;
-    transition:background .15s ease, color .15s ease;
+    border:1px solid var(--line);
+    border-radius:8px;
+    color:var(--text);
+    background:var(--bg-raised);
+    transition:border-color .15s ease, transform .15s ease;
   }
-  .btn:hover{ background:var(--ink); color:var(--paper-raised); }
-  .btn.primary{ background:var(--blue); color:#fff; border-color:var(--blue); }
-  .btn.primary:hover{ background:#153f7c; }
+  .btn:hover{ border-color:var(--violet-soft); transform:translateY(-2px); }
+  .btn.primary{
+    background:linear-gradient(120deg, var(--violet-soft), var(--violet));
+    border-color:transparent;
+    color:#fff;
+  }
+  .btn.primary:hover{ box-shadow:0 0 24px rgba(168,85,247,.4); }
 
   @media (max-width:640px){
-    .sheet{ padding:18px 16px 44px; }
-    .spec-table td.label{ width:120px; }
+    .sheet{ padding:40px 18px 56px; }
   }
 </style>
 </head>
 <body>
 
+<div class="aurora"></div>
+<div class="aurora-2"></div>
+
+<svg class="molecule m1" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#a855f7" stroke-width="1.4">
+    <polygon points="90,20 140,48 140,104 90,132 40,104 40,48" />
+    <polygon points="190,60 240,88 240,144 190,172 140,144 140,88" />
+    <polygon points="90,132 140,160 140,216 90,244 40,216 40,160" />
+    <circle cx="90" cy="20" r="3" fill="#22d3ee" stroke="none"/>
+    <circle cx="240" cy="88" r="3" fill="#f472b6" stroke="none"/>
+    <circle cx="90" cy="244" r="3" fill="#22d3ee" stroke="none"/>
+  </g>
+</svg>
+
+<svg class="molecule m2" viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#22d3ee" stroke-width="1.4">
+    <polygon points="70,10 118,36 118,90 70,116 22,90 22,36" />
+    <line x1="118" y1="63" x2="180" y2="63" />
+    <polygon points="230,36 278,63 278,117 230,144 182,117 182,63" />
+    <line x1="70" y1="116" x2="70" y2="170" />
+    <circle cx="70" cy="10" r="3" fill="#a855f7" stroke="none"/>
+    <circle cx="278" cy="63" r="3" fill="#f472b6" stroke="none"/>
+    <circle cx="70" cy="170" r="3" fill="#a855f7" stroke="none"/>
+  </g>
+</svg>
+
+<svg class="molecule m3" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#f472b6" stroke-width="1.4">
+    <polygon points="70,10 118,36 118,90 70,116 22,90 22,36" />
+    <line x1="70" y1="116" x2="70" y2="170" />
+    <circle cx="70" cy="170" r="3" fill="#22d3ee" stroke="none"/>
+  </g>
+</svg>
+
 <div class="sheet">
 
-  <div class="frame-top">
-    <svg class="regmark" viewBox="0 0 18 18"><circle cx="9" cy="9" r="6"/><line x1="9" y1="0" x2="9" y2="18"/><line x1="0" y1="9" x2="18" y2="9"/></svg>
-    <span class="mono">TDS-2026 / REV.03</span>
-    <svg class="regmark" viewBox="0 0 18 18"><circle cx="9" cy="9" r="6"/><line x1="9" y1="0" x2="9" y2="18"/><line x1="0" y1="9" x2="18" y2="9"/></svg>
+  <div class="status-row">
+    <span class="dot"></span>
+    <span class="mono">SYSTEM ONLINE — PROFILE ACTIVE</span>
   </div>
 
   <header class="masthead">
-    <p class="doc-label mono">TECHNICAL DATA SHEET — PROFESSIONAL PROFILE</p>
+    <h1 class="name">M. Zidan Alfareza</h1>
+    <p class="role-line">Chemist<span class="sep">/</span>R&amp;D<span class="sep">/</span>QC<span class="sep">/</span>Sustainable Formulation</p>
 
-    <div class="name-stack">
-      <p class="layer ghost c">M. Zidan Alfareza</p>
-      <p class="layer ghost m">M. Zidan Alfareza</p>
-      <p class="layer ghost y">M. Zidan Alfareza</p>
-      <p class="layer final">M. Zidan Alfareza</p>
-    </div>
-
-    <p class="role-line">Chemist — Ink &amp; Adhesive Formulation · R&amp;D and Quality Control</p>
-
-    <div class="contact-row mono">
-      <span><span class="k">TEL</span>+62 858-7578-7747</span>
-      <span><span class="k">MAIL</span><a href="mailto:zidanalfarrr@gmail.com">zidanalfarrr@gmail.com</a></span>
-      <span><span class="k">LOC</span>Jakarta, Indonesia</span>
-      <span><span class="k">NET</span><a href="https://linkedin.com/in/mzidanalfareza" target="_blank" rel="noopener">linkedin.mzidanalfareza</a></span>
+    <div class="contact-row">
+      <a class="chip" href="mailto:zidanalfarrr@gmail.com"><span class="k mono">MAIL</span>zidanalfarrr@gmail.com</a>
+      <a class="chip" href="tel:+6285875787747"><span class="k mono">TEL</span>+62 858-7578-7747</a>
+      <span class="chip"><span class="k mono">LOC</span>Jakarta, Indonesia</span>
+      <a class="chip" href="https://linkedin.com/in/mzidanalfareza" target="_blank" rel="noopener"><span class="k mono">NET</span>linkedin.mzidanalfareza</a>
     </div>
   </header>
 
-  <!-- 01 SUMMARY -->
+  <div class="trace-wrap">
+    <div class="trace-label mono">
+      <span>UV-VIS ABSORPTION TRACE</span>
+      <span>400 — 700nm</span>
+    </div>
+    <svg class="trace-svg" viewBox="0 0 780 90" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="traceGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#a855f7"/>
+          <stop offset="45%" stop-color="#22d3ee"/>
+          <stop offset="100%" stop-color="#f472b6"/>
+        </linearGradient>
+      </defs>
+      <path class="trace-path" d="M0,60 C40,58 60,55 90,50 C130,42 150,20 180,15 C210,10 230,30 255,45 C290,65 310,70 340,68 C380,65 400,35 430,22 C460,10 485,18 510,35 C540,55 560,62 590,58 C630,52 650,25 680,18 C710,12 740,30 780,32" />
+    </svg>
+  </div>
+
+  <!-- SUMMARY -->
   <section class="block">
     <div class="block-head">
-      <span class="num mono">01</span>
+      <span class="chan mono">CH-01</span>
       <h2>Summary</h2>
-      <div class="rule"></div>
     </div>
     <p class="summary-text">Experienced chemist specializing in inks and adhesives, with a solid background across R&amp;D and quality control. Proven track record in product development, material research, process optimization, and sustainability-driven reformulation — backed by strong instrumental and conventional analysis skills, close attention to detail, and a structured approach to problem-solving.</p>
   </section>
 
-  <!-- 02 CORE COMPETENCIES -->
+  <!-- CORE COMPETENCIES -->
   <section class="block">
     <div class="block-head">
-      <span class="num mono">02</span>
+      <span class="chan mono">CH-02</span>
       <h2>Core competencies</h2>
-      <div class="rule"></div>
     </div>
-    <table class="spec-table">
-      <tr>
-        <td class="label mono">INSTRUMENTAL ANALYSIS</td>
-        <td class="value">UV-Vis Spectroscopy, GC, MS, HPLC, HPTLC, AAS, FTIR</td>
-      </tr>
-      <tr>
-        <td class="label mono">LAB EQUIPMENT &amp; TESTING</td>
-        <td class="value">Digital microscopes, KF titration, COF testers, Suntest XLS+, Xenotest, tensile testing machines, eXact spectrophotometer</td>
-      </tr>
-      <tr>
-        <td class="label mono">CONVENTIONAL ANALYSIS</td>
-        <td class="value">Volumetric analysis, gravimetric analysis</td>
-      </tr>
-      <tr>
-        <td class="label mono">SOFTWARE &amp; DATA</td>
-        <td class="value">Microsoft Office, Outlook, Aspen HYSYS, PFD, SQL, Python, Tableau, Looker Studio</td>
-      </tr>
-      <tr>
-        <td class="label mono">WORKING STYLE</td>
-        <td class="value">Time management &amp; prioritization, adaptability, attention to detail, problem-solving</td>
-      </tr>
-    </table>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <span class="mono">INSTRUMENTAL ANALYSIS</span>
+        <p>UV-Vis Spectroscopy, GC, MS, HPLC, HPTLC, AAS, FTIR</p>
+      </div>
+      <div class="comp-card">
+        <span class="mono">LAB EQUIPMENT &amp; TESTING</span>
+        <p>Digital microscopes, KF titration, COF testers, Suntest XLS+, Xenotest, tensile testing machines, eXact spectrophotometer</p>
+      </div>
+      <div class="comp-card">
+        <span class="mono">CONVENTIONAL ANALYSIS</span>
+        <p>Volumetric analysis, gravimetric analysis</p>
+      </div>
+      <div class="comp-card">
+        <span class="mono">SOFTWARE &amp; DATA</span>
+        <p>Microsoft Office, Outlook, Aspen HYSYS, PFD, SQL, Python, Tableau, Looker Studio</p>
+      </div>
+      <div class="comp-card" style="grid-column:1/-1">
+        <span class="mono">WORKING STYLE</span>
+        <p>Time management &amp; prioritization, adaptability, attention to detail, problem-solving</p>
+      </div>
+    </div>
   </section>
 
-  <!-- 03 EXPERIENCE -->
+  <!-- EXPERIENCE -->
   <section class="block">
     <div class="block-head">
-      <span class="num mono">03</span>
+      <span class="chan mono">CH-03</span>
       <h2>Work experience</h2>
-      <div class="rule"></div>
     </div>
 
     <div class="job">
@@ -448,12 +555,11 @@
     </div>
   </section>
 
-  <!-- 04 EDUCATION -->
+  <!-- EDUCATION -->
   <section class="block">
     <div class="block-head">
-      <span class="num mono">04</span>
+      <span class="chan mono">CH-04</span>
       <h2>Education</h2>
-      <div class="rule"></div>
     </div>
 
     <div class="edu">
@@ -479,30 +585,28 @@
     </div>
   </section>
 
-  <!-- 05 CERTIFICATIONS -->
+  <!-- CERTIFICATIONS -->
   <section class="block">
     <div class="block-head">
-      <span class="num mono">05</span>
+      <span class="chan mono">CH-05</span>
       <h2>Certifications &amp; training</h2>
-      <div class="rule"></div>
     </div>
     <div class="cert-grid">
-      <div class="cert-item"><span class="tag mono">●</span>Packaging Printing Essentials &amp; Cost-Effective Strategies — IPF Masterclass</div>
-      <div class="cert-item"><span class="tag mono">●</span>Technical Guidance for SNI ISO/IEC 17025:2017 Accreditation — SGS Academy</div>
-      <div class="cert-item"><span class="tag mono">●</span>IELTS — IDP Kelapa Gading, Jakarta</div>
-      <div class="cert-item"><span class="tag mono">●</span>Full Stack Data Analytics — RevoU</div>
-      <div class="cert-item"><span class="tag mono">●</span>Quality Management System Training — ISO 9001:2015</div>
-      <div class="cert-item"><span class="tag mono">●</span>Food Safety Management System Training — ISO 22000:2018</div>
-      <div class="cert-item"><span class="tag mono">●</span>Environmental Management System Training — ISO 14001:2015</div>
+      <div class="cert-item"><span class="tag mono">◆</span>Packaging Printing Essentials &amp; Cost-Effective Strategies — IPF Masterclass</div>
+      <div class="cert-item"><span class="tag mono">◆</span>Technical Guidance for SNI ISO/IEC 17025:2017 Accreditation — SGS Academy</div>
+      <div class="cert-item"><span class="tag mono">◆</span>IELTS — IDP Kelapa Gading, Jakarta</div>
+      <div class="cert-item"><span class="tag mono">◆</span>Full Stack Data Analytics — RevoU</div>
+      <div class="cert-item"><span class="tag mono">◆</span>Quality Management System Training — ISO 9001:2015</div>
+      <div class="cert-item"><span class="tag mono">◆</span>Food Safety Management System Training — ISO 22000:2018</div>
+      <div class="cert-item"><span class="tag mono">◆</span>Environmental Management System Training — ISO 14001:2015</div>
     </div>
   </section>
 
-  <!-- 06 ORGANIZATION -->
+  <!-- ORGANIZATION -->
   <section class="block">
     <div class="block-head">
-      <span class="num mono">06</span>
+      <span class="chan mono">CH-06</span>
       <h2>Organization &amp; volunteer experience</h2>
-      <div class="rule"></div>
     </div>
 
     <div class="job">
@@ -542,20 +646,12 @@
   </div>
 
   <footer>
-    <div class="colorbar" aria-hidden="true">
-      <span class="c"></span><span class="m"></span><span class="y"></span><span class="k"></span>
-    </div>
+    <div class="specbar" aria-hidden="true"></div>
     <div class="footer-row mono">
       <span>M. ZIDAN ALFAREZA · CHEMIST</span>
       <span>MAJALENGKA, INDONESIA · 2026</span>
     </div>
   </footer>
-
-  <div class="frame-bottom">
-    <svg class="regmark" viewBox="0 0 18 18"><circle cx="9" cy="9" r="6"/><line x1="9" y1="0" x2="9" y2="18"/><line x1="0" y1="9" x2="18" y2="9"/></svg>
-    <span class="mono">PAGE 1/1</span>
-    <svg class="regmark" viewBox="0 0 18 18"><circle cx="9" cy="9" r="6"/><line x1="9" y1="0" x2="9" y2="18"/><line x1="0" y1="9" x2="18" y2="9"/></svg>
-  </div>
 
 </div>
 
